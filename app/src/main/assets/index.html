@@ -15,30 +15,30 @@
 <br>
 <br>
 
-<p>__initial latitude:         <span></span><br>
-     current latitude:         <span></span><br>
-     _______________:          <span></span></p>
-<p>__initial longitude:        <span></span><br>
-     current longitude:        <span></span><br>
-     ________________:         <span></span></p>
-<p>__initial altitude:         <span></span><br>
-     current altitude:         <span></span><br>
-     _______________:          <span></span></p>
-<p>__initial accuracy:         <span></span><br>
-     current accuracy:         <span></span><br>
-     _______________:          <span></span></p>
-<p>__initial altitudeAccuracy: <span></span><br>
-     current altitudeAccuracy: <span></span><br>
-     _______________________:  <span></span></p>
-<p>__initial heading:          <span></span><br>
-     current heading:          <span></span><br>
-     ______________:           <span></span></p>
-<p>__initial speed:            <span></span><br>
-     current speed:            <span></span><br>
-     ____________:             <span></span></p>
-<p>__initial local time:       <span></span><br>
-     current local time:       <span></span><br>
-     _________________:        <span></span></p>
+<p>   current latitude:         <span></span><br>
+    -_initial latitude:         <span></span><br>
+      =______________:          <span></span></p>
+<p>   current longitude:        <span></span><br>
+    -_initial longitude:        <span></span><br>
+      =_______________:         <span></span></p>
+<p>   current altitude:         <span></span><br>
+    -_initial altitude:         <span></span><br>
+      =______________:          <span></span></p>
+<p>   current accuracy:         <span></span><br>
+    -_initial accuracy:         <span></span><br>
+      =______________:          <span></span></p>
+<p>   current altitudeAccuracy: <span></span><br>
+    -_initial altitudeAccuracy: <span></span><br>
+      =______________________:  <span></span></p>
+<p>   current heading:          <span></span><br>
+    -_initial heading:          <span></span><br>
+      =_____________:           <span></span></p>
+<p>   current speed:            <span></span><br>
+    -_initial speed:            <span></span><br>
+      =___________:             <span></span></p>
+<p>   current local time:       <span></span><br>
+    -_initial local time:       <span></span><br>
+      =________________:        <span></span></p>
 
 
 
@@ -64,9 +64,24 @@ function getLocation() {
     //navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
     //navigator.geolocation.getCurrentPosition(
     //successCallback, errorCallback, {enableHighAccuracy:false; timeout:6000; maximumAge:0;}
-    //);
+    //);.toLocaleTimeString()
+
     watchID = navigator.geolocation.watchPosition(
         function(position){
+               spans = document.querySelectorAll('p span');
+               spans[0].textContent = position.coords.latitude;
+               spans[3].textContent = position.coords.longitude;
+               spans[6].textContent = position.coords.altitude;
+               spans[9].textContent = position.coords.accuracy;
+               spans[12].textContent = position.coords.altitudeAccuracy;
+               spans[15].textContent = position.coords.heading;
+               spans[18].textContent = position.coords.speed;
+               //spans[21].textContent = position.timestamp.toLocaleTimeString();
+               spans[21].textContent = new Date(position.timestamp).toLocaleString();
+
+
+               spans[2].textContent = (spans[0].textContent - spans[1].textContent).toFixed(7);
+
             const now = new Date();
             let gl_txt = "latitude: "         + position.coords.latitude + "<br>";
               gl_txt +=  "longitude: "        + position.coords.longitude + "<br>";
@@ -88,8 +103,8 @@ getLocation();
 
 function showPosition(position) {
     spans = document.querySelectorAll('p span');
-    spans[0].textContent = position.coords.latitude;
-    spans[1].textContent = position.coords.longitude;
+    spans[1].textContent = position.coords.latitude;
+    spans[4].textContent = position.coords.longitude;
 
   x.innerHTML = "Latitude: " + position.coords.latitude +
   "<br>Longitude: " + position.coords.longitude +
