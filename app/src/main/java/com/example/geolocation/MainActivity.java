@@ -1,4 +1,4 @@
-package com.example.krishna_4966.test;
+package com.example.geolocation;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -6,11 +6,11 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.webkit.GeolocationPermissions;
 import android.webkit.WebChromeClient;
-import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+
+import com.example.geolocation.test.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        webView.loadUrl("https://www.w3schools.com/html/tryit.asp?filename=tryhtml5_geolocation");
+        //webView.loadUrl("https://www.w3schools.com/html/tryit.asp?filename=tryhtml5_geolocation");
+        webView.loadUrl("file:///android_asset/index.html");
     }
 }

@@ -1,4 +1,4 @@
-package com.example.krishna_4966.test;
+package com.example.geolocation;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
