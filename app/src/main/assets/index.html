@@ -71,7 +71,7 @@ function getLocation() {
                spans[18].textContent = position.coords.speed;
                //spans[21].textContent = position.timestamp.toLocaleTimeString();
                now = new Date(position.timestamp);
-               spans[21].textContent = now.toLocaleString();
+               spans[21].textContent = now.toLocaleTimeString();
                //spans[21].textContent = new Date(position.timestamp).toLocaleString();
 
 
@@ -82,7 +82,19 @@ function getLocation() {
                spans[14].textContent = (spans[12].textContent - spans[13].textContent).toFixed(7);
                spans[17].textContent = (spans[15].textContent - spans[16].textContent).toFixed(7);
                spans[20].textContent = (spans[18].textContent - spans[19].textContent).toFixed(7);
-               spans[23].textContent = (spans[21].textContent - spans[22].textContent).toFixed(7);
+
+               //spans[23].textContent = (spans[21].textContent - spans[22].textContent).toFixed(7);
+               //spans[23].textContent = Math.round((now - initTime)/1000.0);
+               //spans[23].textContent = Math.floor(now/1000.0) - Math.floor(initTime/1000.0);
+               fullSeconds = Math.floor(now/1000.0) - Math.floor(initTime/1000.0);
+
+               var paddingZero = function(n) {
+                    return (n < 10) ? '0' + n : n;
+               };
+
+               second = Math.floor(fullSeconds % 60);
+               second = paddingZero(second);
+               spans[23].textContent = ':' + second;
 
             //const now = new Date();
             //let gl_txt = "latitude: "         + position.coords.latitude + "<br>";
@@ -112,7 +124,10 @@ function showPosition(position) {
     spans[13].textContent = position.coords.altitudeAccuracy;
     spans[16].textContent = position.coords.heading;
     spans[19].textContent = position.coords.speed;
-    spans[22].textContent = new Date(position.timestamp).toLocaleString();
+
+    initTime = new Date(position.timestamp);
+    spans[22].textContent = initTime.toLocaleTimeString();
+    //spans[22].textContent = new Date(position.timestamp).toLocaleTimeString();
 
 
   //x.innerHTML = "Latitude: " + position.coords.latitude +
@@ -161,39 +176,3 @@ function errorCallback(error) {
 </body>
 </html>
 
-
-<!--
-function init(){
-if(navigator.geolocation){
-let giveUp = 1000 * 30;  //30 seconds
-let tooOld = 1000 * 60 * 60;  //one hour
-options ={
-enableHighAccuracy: true,
-timeout: giveUp,
-maximumAge: tooOld
-}
-
-navigator.geolocation.getCurrentPosition(gotPos, posFail, options);
-}else{
-//using an old browser that doesn't support geolocation
-}
-}
-
-function gotPos(position){
-spans = document.querySelectorAll('p span');
-spans[0].textContent = position.coords.latitude;
-spans[1].textContent = position.coords.longitude;
-spans[2].textContent = position.coords.accuracy;
-
-spans[6].textContent = position.timestamp;
-}
-
-function posFail(err){
-//err is a number
-let errors = {
-1: 'No permission',
-2: 'Unable to determine',
-3: 'Took too long'
-}
-document.querySelector('h1').textContent = errors[err];
-}
