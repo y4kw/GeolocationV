@@ -4,17 +4,17 @@
 </head>
 <body>
 
-<hi>Click the button to get your coordinates.</hi>
+<hi>your coordinates.</hi>
 
 <!--
 <button onclick="getLocation()">Try It</button>
--->
 
 <p id="demo"></p>
 <br>
 <p id="demowatch"></p>
 <br>
 <br>
+-->
 
 <p> +_current latitude:         <span></span><br>
     -_initial latitude:         <span></span><br>
@@ -43,18 +43,20 @@
 
 <script>
 
-var x = document.getElementById("demo");
-var w = document.getElementById("demowatch");
+//var x = document.getElementById("demo");
+//var w = document.getElementById("demowatch");
+
 var watchID;
 
 //x.innerHTML = "Geolocation";
 
+getLocation();
 
 function getLocation() {
   if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
+    //navigator.geolocation.getCurrentPosition(showPosition);
 
-    //navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+    navigator.geolocation.getCurrentPosition(showPosition, errorCallback);
     //navigator.geolocation.getCurrentPosition(
     //successCallback, errorCallback, {enableHighAccuracy:false; timeout:6000; maximumAge:0;}
     //);.toLocaleTimeString()
@@ -69,11 +71,9 @@ function getLocation() {
                spans[12].textContent = position.coords.altitudeAccuracy;
                spans[15].textContent = position.coords.heading;
                spans[18].textContent = position.coords.speed;
-               //spans[21].textContent = position.timestamp.toLocaleTimeString();
+
                now = new Date(position.timestamp);
                spans[21].textContent = now.toLocaleTimeString();
-               //spans[21].textContent = new Date(position.timestamp).toLocaleString();
-
 
                spans[2].textContent = (spans[0].textContent - spans[1].textContent).toFixed(7);
                spans[5].textContent = (spans[3].textContent - spans[4].textContent).toFixed(7);
@@ -83,37 +83,23 @@ function getLocation() {
                spans[17].textContent = (spans[15].textContent - spans[16].textContent).toFixed(7);
                spans[20].textContent = (spans[18].textContent - spans[19].textContent).toFixed(7);
 
-               //spans[23].textContent = (spans[21].textContent - spans[22].textContent).toFixed(7);
-               //spans[23].textContent = Math.round((now - initTime)/1000.0);
-               //spans[23].textContent = Math.floor(now/1000.0) - Math.floor(initTime/1000.0);
                fullSeconds = Math.floor(now/1000.0) - Math.floor(initTime/1000.0);
-
                var paddingZero = function(n) {
                     return (n < 10) ? '0' + n : n;
                };
-
+               hour = Math.floor(fullSeconds / 3600);
+               minute = Math.floor(fullSeconds % 3600 / 60);
                second = Math.floor(fullSeconds % 60);
+               hour= paddingZero(hour);
+               minute= paddingZero(minute);
                second = paddingZero(second);
-               spans[23].textContent = ':' + second;
+               spans[23].textContent =hour + ':' + minute + ':' + second;
 
-            //const now = new Date();
-            //let gl_txt = "latitude: "         + position.coords.latitude + "<br>";
-            //  gl_txt +=  "longitude: "        + position.coords.longitude + "<br>";
-            //  gl_txt +=  "altitude: "         + position.coords.altitude + "<br>";
-            //  gl_txt +=  "accuracy: "         + position.coords.accuracy + "<br>";
-            //  gl_txt +=  "altitudeAccuracy: " + position.coords.altitudeAccuracy + "<br>";
-            //  gl_txt +=  "heading: "          + position.coords.heading + "<br>";
-            //  gl_txt +=  "speed: "            + position.coords.speed + "<br>";
-            //  gl_txt +=  "local time: "       + now.toLocaleTimeString() + "<br>";
-            //  w.innerHTML = gl_txt;
         },null);
   } else {
-    x.innerHTML = "Geolocation is not supported by this browser.";
+    document.querySelector('p').textContent = "Geolocation is not supported by this browser.";
   }
 }
-
-getLocation();
-
 
 function showPosition(position) {
     spans = document.querySelectorAll('p span');
@@ -127,31 +113,6 @@ function showPosition(position) {
 
     initTime = new Date(position.timestamp);
     spans[22].textContent = initTime.toLocaleTimeString();
-    //spans[22].textContent = new Date(position.timestamp).toLocaleTimeString();
-
-
-  //x.innerHTML = "Latitude: " + position.coords.latitude +
-  //"<br>Longitude: " + position.coords.longitude +
-  //"<br>Altitutude: " + position.coords.altitude +
-  //"<br>Accuracy: " + position.coords.accuracy;
-
-  //x.innerHTML = "";
-  //for (var key in position.coords) {
-  //x.innerHTML += key;
-  //}
-  }
-
- function successCallback(position) {
-  const date = new Date();
-  var gl_text = "latitude: "         + position.coords.latitude + "<br>";
-    gl_text +=  "longitude: "        + position.coords.longitude + "<br>";
-    gl_text +=  "altitude: "         + position.coords.altitude + "<br>";
-    gl_text +=  "accuracy: "         + position.coords.accuracy + "<br>";
-    gl_text +=  "altitudeAccuracy: " + position.coords.altitudeAccuracy + "<br>";
-    gl_text +=  "heading: "          + position.coords.heading + "<br>";
-    gl_text +=  "speed: "            + position.coords.speed + "<br>";
-    gl_text +=  "local time: "       + date.toLocaleTimeString() + "<br>";
-    x.innerHTML = gl_text;
 }
 
 function errorCallback(error) {
