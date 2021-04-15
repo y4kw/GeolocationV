@@ -1,10 +1,8 @@
-
 <html>
 <head>
     <style type="text/css">p { font-family : monospace; }</style>
 </head>
 <body>
-
 
 <hi>Click the button to get your coordinates.</hi>
 
@@ -43,14 +41,6 @@
     -_initial local time:       <span></span><br>
     =___________________:       <span></span></p>
 
-
-
-
-
-
-
-
-
 <script>
 
 var x = document.getElementById("demo");
@@ -80,21 +70,30 @@ function getLocation() {
                spans[15].textContent = position.coords.heading;
                spans[18].textContent = position.coords.speed;
                //spans[21].textContent = position.timestamp.toLocaleTimeString();
-               spans[21].textContent = new Date(position.timestamp).toLocaleString();
+               now = new Date(position.timestamp);
+               spans[21].textContent = now.toLocaleString();
+               //spans[21].textContent = new Date(position.timestamp).toLocaleString();
 
 
                spans[2].textContent = (spans[0].textContent - spans[1].textContent).toFixed(7);
+               spans[5].textContent = (spans[3].textContent - spans[4].textContent).toFixed(7);
+               spans[8].textContent = (spans[6].textContent - spans[7].textContent).toFixed(7);
+               spans[11].textContent = (spans[9].textContent - spans[10].textContent).toFixed(7);
+               spans[14].textContent = (spans[12].textContent - spans[13].textContent).toFixed(7);
+               spans[17].textContent = (spans[15].textContent - spans[16].textContent).toFixed(7);
+               spans[20].textContent = (spans[18].textContent - spans[19].textContent).toFixed(7);
+               spans[23].textContent = (spans[21].textContent - spans[22].textContent).toFixed(7);
 
-            const now = new Date();
-            let gl_txt = "latitude: "         + position.coords.latitude + "<br>";
-              gl_txt +=  "longitude: "        + position.coords.longitude + "<br>";
-              gl_txt +=  "altitude: "         + position.coords.altitude + "<br>";
-              gl_txt +=  "accuracy: "         + position.coords.accuracy + "<br>";
-              gl_txt +=  "altitudeAccuracy: " + position.coords.altitudeAccuracy + "<br>";
-              gl_txt +=  "heading: "          + position.coords.heading + "<br>";
-              gl_txt +=  "speed: "            + position.coords.speed + "<br>";
-              gl_txt +=  "local time: "       + now.toLocaleTimeString() + "<br>";
-              w.innerHTML = gl_txt;
+            //const now = new Date();
+            //let gl_txt = "latitude: "         + position.coords.latitude + "<br>";
+            //  gl_txt +=  "longitude: "        + position.coords.longitude + "<br>";
+            //  gl_txt +=  "altitude: "         + position.coords.altitude + "<br>";
+            //  gl_txt +=  "accuracy: "         + position.coords.accuracy + "<br>";
+            //  gl_txt +=  "altitudeAccuracy: " + position.coords.altitudeAccuracy + "<br>";
+            //  gl_txt +=  "heading: "          + position.coords.heading + "<br>";
+            //  gl_txt +=  "speed: "            + position.coords.speed + "<br>";
+            //  gl_txt +=  "local time: "       + now.toLocaleTimeString() + "<br>";
+            //  w.innerHTML = gl_txt;
         },null);
   } else {
     x.innerHTML = "Geolocation is not supported by this browser.";
@@ -108,11 +107,18 @@ function showPosition(position) {
     spans = document.querySelectorAll('p span');
     spans[1].textContent = position.coords.latitude;
     spans[4].textContent = position.coords.longitude;
+    spans[7].textContent = position.coords.altitude;
+    spans[10].textContent = position.coords.accuracy;
+    spans[13].textContent = position.coords.altitudeAccuracy;
+    spans[16].textContent = position.coords.heading;
+    spans[19].textContent = position.coords.speed;
+    spans[22].textContent = new Date(position.timestamp).toLocaleString();
 
-  x.innerHTML = "Latitude: " + position.coords.latitude +
-  "<br>Longitude: " + position.coords.longitude +
-  "<br>Altitutude: " + position.coords.altitude +
-  "<br>Accuracy: " + position.coords.accuracy;
+
+  //x.innerHTML = "Latitude: " + position.coords.latitude +
+  //"<br>Longitude: " + position.coords.longitude +
+  //"<br>Altitutude: " + position.coords.altitude +
+  //"<br>Accuracy: " + position.coords.accuracy;
 
   //x.innerHTML = "";
   //for (var key in position.coords) {
