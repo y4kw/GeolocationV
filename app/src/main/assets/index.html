@@ -43,15 +43,9 @@
 
 <script>
 
-//var x = document.getElementById("demo");
-//var w = document.getElementById("demowatch");
-
-var watchID;
-
-//x.innerHTML = "Geolocation";
-
 getLocation();
 
+var watchID;
 function getLocation() {
   if (navigator.geolocation) {
     //navigator.geolocation.getCurrentPosition(showPosition);
@@ -85,7 +79,7 @@ function getLocation() {
 
                fullSeconds = Math.floor(now/1000.0) - Math.floor(initTime/1000.0);
                var paddingZero = function(n) {
-                    return (n < 10) ? '0' + n : n;
+                    return (n < 10) ? '\xa0' + n : n;
                };
                hour = Math.floor(fullSeconds / 3600);
                minute = Math.floor(fullSeconds % 3600 / 60);
