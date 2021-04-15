@@ -2,6 +2,7 @@ package com.example.geolocation;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.pm.ActivityInfo;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,7 +14,6 @@ import android.webkit.WebViewClient;
 import com.example.geolocation.test.R;
 
 public class MainActivity extends AppCompatActivity {
-
 
     private WebView webView;
 
