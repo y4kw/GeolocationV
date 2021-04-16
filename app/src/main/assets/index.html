@@ -1,6 +1,8 @@
 <html>
 <head>
-    <style type="text/css">p { font-family : monospace; }</style>
+    <style>
+    .my_text { font-family : monospace; }
+    </style>
 </head>
 <body>
 
@@ -15,6 +17,8 @@
 <br>
 <br>
 -->
+<div class="my_text">
+
 
 <p> +_current latitude:         <span></span><br>
     -_initial latitude:         <span></span><br>
@@ -40,6 +44,13 @@
 <p> +_current local time:       <span></span><br>
     -_initial local time:       <span></span><br>
     =___________________:       <span></span></p>
+
+
+    <p id="latitude"> +_current latitude:         <span></span><br>
+                      -_initial latitude:         <span></span><br>
+                      =_________________:         <span></span></p>
+
+</div>
 
 <script>
 
@@ -93,6 +104,9 @@ function getLocation() {
                 minute= paddingZero(minute);
                 second = paddingZero(second);
                 spans[23].textContent =hour + ':' + minute + ':' + second;
+
+                latitude = document.querySelectorAll('#latitude span');
+                latitude[0].textContent = 'vnd';
 
         },null);
   } else {
