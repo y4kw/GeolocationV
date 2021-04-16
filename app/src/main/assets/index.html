@@ -58,13 +58,13 @@ function getLocation() {
     watchID = navigator.geolocation.watchPosition(
         function(position){
                spans = document.querySelectorAll('p span');
-               spans[0].textContent = position.coords.latitude;
-               spans[3].textContent = position.coords.longitude;
-               spans[6].textContent = position.coords.altitude;
-               spans[9].textContent = position.coords.accuracy;
-               spans[12].textContent = position.coords.altitudeAccuracy;
-               spans[15].textContent = position.coords.heading;
-               spans[18].textContent = position.coords.speed;
+               spans[0].textContent = '\xa0' + position.coords.latitude.toFixed(7);
+               spans[3].textContent =  '\xa0' + position.coords.longitude;
+               spans[6].textContent =  '\xa0' + position.coords.altitude;
+               spans[9].textContent =  '\xa0' + position.coords.accuracy;
+               spans[12].textContent = '\xa0' +  position.coords.altitudeAccuracy;
+               spans[15].textContent = '\xa0' +  position.coords.heading;
+               spans[18].textContent = '\xa0' +  position.coords.speed;
 
                now = new Date(position.timestamp);
                spans[21].textContent = now.toLocaleTimeString();
@@ -97,13 +97,13 @@ function getLocation() {
 
 function showPosition(position) {
     spans = document.querySelectorAll('p span');
-    spans[1].textContent = position.coords.latitude;
-    spans[4].textContent = position.coords.longitude;
-    spans[7].textContent = position.coords.altitude;
-    spans[10].textContent = position.coords.accuracy;
-    spans[13].textContent = position.coords.altitudeAccuracy;
-    spans[16].textContent = position.coords.heading;
-    spans[19].textContent = position.coords.speed;
+    spans[1].textContent = '\xa0' + position.coords.latitude.toFixed(7);
+    spans[4].textContent = '\xa0' + position.coords.longitude;
+    spans[7].textContent = '\xa0' + position.coords.altitude;
+    spans[10].textContent = '\xa0' +  position.coords.accuracy;
+    spans[13].textContent = '\xa0' +  position.coords.altitudeAccuracy;
+    spans[16].textContent = '\xa0' +  position.coords.heading;
+    spans[19].textContent = '\xa0' +  position.coords.speed;
 
     initTime = new Date(position.timestamp);
     spans[22].textContent = initTime.toLocaleTimeString();
