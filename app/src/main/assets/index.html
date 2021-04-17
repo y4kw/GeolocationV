@@ -6,9 +6,9 @@
   </head>
   <body>
 
-    <hi>your coordinates.</hi>
 
     <!--
+      <hi>your coordinates.</hi>
       <button onclick="getLocation()">Try It</button>
 
       <p id="demo"></p>
@@ -118,7 +118,9 @@
                                         var coord = coords[i];
                                         var p = document.createElement('p');
 
-                                        var currentvalue = eval('position.coords.' + coord).toFixed(7);
+                                        var currentvalue =  eval('position.coords.' + coord).toFixed(7);
+                                        var dotpos = currentvalue.toString().indexOf('.');
+                                            currentvalue = '\xa0 '.repeat(4 - dotpos) + currentvalue;
                                         var t = '+_current ' + coord + ': ' + currentvalue;
                                         var text = document.createTextNode(t);
                                         p.appendChild(text);
@@ -126,14 +128,18 @@
                                         p.appendChild(document.createElement("br"));
 
                                         var initialvalue = initials[coord].toFixed(7);
+                                        var dotpos = initialvalue.toString().indexOf('.');
+                                            initialvalue = '\xa0 '.repeat(4 - dotpos) + initialvalue;
                                         var t = '+_initial ' + coord + ': ' + initialvalue;
                                         var text = document.createTextNode(t);
                                         p.appendChild(text);
 
                                         p.appendChild(document.createElement("br"));
 
-                                        var diff = (currentvalue - initialvalue).toFixed(7);
-                                        var t = '=_________' + coord + ': ' + diff;
+                                        var diffvalue = (currentvalue - initialvalue).toFixed(7);
+                                        var dotpos = diffvalue.toString().indexOf('.');
+                                            diffvalue = '\xa0 '.repeat(4 - dotpos) + diffvalue;
+                                        var t = '=_________' + coord.replace(/./g, '_') + ': ' + diffvalue;
                                         var text = document.createTextNode(t);
                                         p.appendChild(text);
 
