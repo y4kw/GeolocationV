@@ -117,11 +117,11 @@
                                       for(var i = 0, arraylen = coords.length; i < arraylen; i++) {
                                         var coord = coords[i];
                                         var p = document.createElement('p');
-
+                                        var space = '\xa0';
                                         var currentvalue =  eval('position.coords.' + coord).toFixed(7);
                                         var dotpos = currentvalue.toString().indexOf('.');
-                                            currentvalue = '\xa0 '.repeat(4 - dotpos) + currentvalue;
-                                        var t = '+_current ' + coord + ': ' + currentvalue;
+                                        var value = space.repeat(4 - dotpos) + currentvalue;
+                                        var t = '+_current ' + coord + ': ' + value;
                                         var text = document.createTextNode(t);
                                         p.appendChild(text);
 
@@ -129,8 +129,8 @@
 
                                         var initialvalue = initials[coord].toFixed(7);
                                         var dotpos = initialvalue.toString().indexOf('.');
-                                            initialvalue = '\xa0 '.repeat(4 - dotpos) + initialvalue;
-                                        var t = '+_initial ' + coord + ': ' + initialvalue;
+                                        var value = space.repeat(4 - dotpos) + initialvalue;
+                                        var t = '+_initial ' + coord + ': ' + value;
                                         var text = document.createTextNode(t);
                                         p.appendChild(text);
 
@@ -138,10 +138,12 @@
 
                                         var diffvalue = (currentvalue - initialvalue).toFixed(7);
                                         var dotpos = diffvalue.toString().indexOf('.');
-                                            diffvalue = '\xa0 '.repeat(4 - dotpos) + diffvalue;
-                                        var t = '=_________' + coord.replace(/./g, '_') + ': ' + diffvalue;
+                                        var value = space.repeat(4 - dotpos) + diffvalue;
+                                        var t = '=_________' + coord.replace(/./g, '_') + ': ' + value;
                                         var text = document.createTextNode(t);
                                         p.appendChild(text);
+
+                                        p.appendChild(document.createElement("br"));
 
                                         list.appendChild(p);
 
