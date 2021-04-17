@@ -59,6 +59,7 @@
 
       var watchID;
       function getLocation() {
+              var coords = [ 'latitude', 'longitude' ];
               if (navigator.geolocation) {
                       navigator.geolocation.getCurrentPosition(showPosition, errorCallback);
 
@@ -109,7 +110,7 @@
                                         = ('\xa0\xa0\xa0' + (spans[0].textContent - spans[1].textContent).toFixed(7)).substring((-8+lendiff));
 
 
-                                      var coords = [ 'latitude', 'longitude' ];
+                                      //var coords = [ 'latitude', 'longitude' ];
                                       var list = document.getElementById('list');
                                       list.textContent = '';
                                       //var p = document.createElement('p');
@@ -117,16 +118,20 @@
                                         var coord = coords[i];
                                         var p = document.createElement('p');
 
-
-                                        var t = '+_current ' + coord + ': ' + eval('position.coords.' + coord);
+                                        var currentvalue = eval('position.coords.' + coord);
+                                        var t = '+_current ' + coord + ': ' + currentvalue;
                                         var text = document.createTextNode(t);
                                         p.appendChild(text);
 
                                         p.appendChild(document.createElement("br"));
 
-                                        var t = '+_initial ' + coord + ': ' + eval('position.coords.' + coord);
+                                        var initialvalue = initials[coord];
+                                        var t = '+_initial ' + coord + ': ' + initialvalue;
                                         var text = document.createTextNode(t);
                                         p.appendChild(text);
+
+                                        p.appendChild(document.createElement("br"));
+
                                         list.appendChild(p);
 
                                       }
@@ -136,8 +141,13 @@
                     } else {
                             document.querySelector('p').textContent = "Geolocation is not supported by this browser.";
                           }
-
+              var initials = {};
               function showPosition(position) {
+                      //var coords = [ 'latitude', 'longitude' ];
+                      for(var i = 0, arraylen = coords.length; i < arraylen; i++) {
+                        var coord = coords[i];
+                        initials[coords[i]] = eval('position.coords.' + coord);
+                      }
                       spans = document.querySelectorAll('p span');
                       spans[1].textContent = '\xa0' + position.coords.latitude.toFixed(7);
                       spans[4].textContent = '\xa0' + position.coords.longitude;
