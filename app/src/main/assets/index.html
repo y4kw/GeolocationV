@@ -59,7 +59,7 @@
 
       var watchID;
       function getLocation() {
-              var coords = [ 'latitude', 'longitude' ];
+              var coords = [ 'latitude', 'longitude', 'altitude' ];
               if (navigator.geolocation) {
                       navigator.geolocation.getCurrentPosition(showPosition, errorCallback);
 
@@ -118,19 +118,24 @@
                                         var coord = coords[i];
                                         var p = document.createElement('p');
 
-                                        var currentvalue = eval('position.coords.' + coord);
+                                        var currentvalue = eval('position.coords.' + coord).toFixed(7);
                                         var t = '+_current ' + coord + ': ' + currentvalue;
                                         var text = document.createTextNode(t);
                                         p.appendChild(text);
 
                                         p.appendChild(document.createElement("br"));
 
-                                        var initialvalue = initials[coord];
+                                        var initialvalue = initials[coord].toFixed(7);
                                         var t = '+_initial ' + coord + ': ' + initialvalue;
                                         var text = document.createTextNode(t);
                                         p.appendChild(text);
 
                                         p.appendChild(document.createElement("br"));
+
+                                        var diff = (currentvalue - initialvalue).toFixed(7);
+                                        var t = '=_________' + coord + ': ' + diff;
+                                        var text = document.createTextNode(t);
+                                        p.appendChild(text);
 
                                         list.appendChild(p);
 
