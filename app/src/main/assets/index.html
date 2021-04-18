@@ -102,13 +102,13 @@
                                       second = paddingZero(second);
                                       spans[23].textContent =hour + ':' + minute + ':' + second;
 
-                                      latitude = document.querySelectorAll('#latitude span');
-                                      latitude[0].textContent = '\xa0' + position.coords.latitude.toFixed(7);
-                                      len = latitude[0].textContent.length;
-                                      lendiff = (latitude[0].textContent - latitude[1].textContent).toFixed(7).toString().length;
-                                      latitude[2].textContent
-                                        = ('\xa0\xa0\xa0' + (spans[0].textContent - spans[1].textContent).toFixed(7)).substring((-8+lendiff));
-
+//                                      latitude = document.querySelectorAll('#latitude span');
+//                                      latitude[0].textContent = '\xa0' + position.coords.latitude.toFixed(7);
+//                                      len = latitude[0].textContent.length;
+//                                      lendiff = (latitude[0].textContent - latitude[1].textContent).toFixed(7).toString().length;
+//                                      latitude[2].textContent
+//                                        = ('\xa0\xa0\xa0' + (spans[0].textContent - spans[1].textContent).toFixed(7)).substring((-8+lendiff));
+//
 
                                       var list = document.getElementById('list');
                                       list.textContent = '';
@@ -166,8 +166,8 @@
                       initTime = new Date(position.timestamp);
                       spans[22].textContent = initTime.toLocaleTimeString();
 
-                      latitude = document.querySelectorAll('#latitude span');
-                      latitude[1].textContent = '\xa0' + position.coords.latitude.toFixed(7);
+                      //latitude = document.querySelectorAll('#latitude span');
+                      //latitude[1].textContent = '\xa0' + position.coords.latitude.toFixed(7);
                     }
 
               function errorCallback(error) {
