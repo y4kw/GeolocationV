@@ -88,17 +88,17 @@
                                       spans[17].textContent = (spans[15].textContent - spans[16].textContent).toFixed(7);
                                       spans[20].textContent = (spans[18].textContent - spans[19].textContent).toFixed(7);
 
-                                      fullSeconds = Math.floor(now/1000.0) - Math.floor(initTime/1000.0);
-                                      var paddingZero = function(n) {
-                                              return (n < 10) ? '\xa0' + n : n;
-                                            };
-                                      hour = Math.floor(fullSeconds / 3600);
-                                      minute = Math.floor(fullSeconds % 3600 / 60);
-                                      second = Math.floor(fullSeconds % 60);
-                                      hour= paddingZero(hour);
-                                      minute= paddingZero(minute);
-                                      second = paddingZero(second);
-                                      spans[23].textContent =hour + ':' + minute + ':' + second;
+                                      //fullSeconds = Math.floor(now/1000.0) - Math.floor(initTime/1000.0);
+                                      //var paddingZero = function(n) {
+                                      //        return (n < 10) ? '\xa0' + n : n;
+                                      //      };
+                                      //hour = Math.floor(fullSeconds / 3600);
+                                      //minute = Math.floor(fullSeconds % 3600 / 60);
+                                      //second = Math.floor(fullSeconds % 60);
+                                      //hour= paddingZero(hour);
+                                      //minute= paddingZero(minute);
+                                      //second = paddingZero(second);
+                                      //spans[23].textContent =hour + ':' + minute + ':' + second;
 
 
                                       var list = document.getElementById('list');
@@ -137,6 +137,7 @@
                                         var initialvalue = init.toLocaleTimeString();
                                         makeText(initialtype, initialvalue, p);
 
+                                        fullSeconds = Math.floor(now/1000.0) - Math.floor(initTime/1000.0);
                                         var paddingZero = function(n) {
                                                 return (n < 10) ? '\xa0' + n : n;
                                               };
