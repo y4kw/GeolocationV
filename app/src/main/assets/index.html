@@ -116,33 +116,18 @@
                                       for(var i = 0, arraylen = coords.length; i < arraylen; i++) {
                                         var coord = coords[i];
                                         var p = document.createElement('p');
-                                        var space = '\xa0';
+
+                                        var currentype = '+_current ' + coord;
                                         var currentvalue =  eval('position.coords.' + coord).toFixed(7);
-                                        var dotpos = currentvalue.toString().indexOf('.');
-                                        var value = space.repeat(4 - dotpos) + currentvalue;
-                                        var t = '+_current ' + coord + ': ' + value;
-                                        var text = document.createTextNode(t);
-                                        p.appendChild(text);
+                                        makeText(currentype, currentvalue, p);
 
-                                        p.appendChild(document.createElement("br"));
-
+                                        var initialtype = '-_initial ' + coord;
                                         var initialvalue = initials[coord].toFixed(7);
-                                        var dotpos = initialvalue.toString().indexOf('.');
-                                        var value = space.repeat(4 - dotpos) + initialvalue;
-                                        var t = '+_initial ' + coord + ': ' + value;
-                                        var text = document.createTextNode(t);
-                                        p.appendChild(text);
+                                        makeText(initialtype, initialvalue, p);
 
-                                        p.appendChild(document.createElement("br"));
-
+                                        var difftype = '=_(diff)__' + coord.replace(/./g, '_');
                                         var diffvalue = (currentvalue - initialvalue).toFixed(7);
-                                        var dotpos = diffvalue.toString().indexOf('.');
-                                        var value = space.repeat(4 - dotpos) + diffvalue;
-                                        var t = '=_________' + coord.replace(/./g, '_') + ': ' + value;
-                                        var text = document.createTextNode(t);
-                                        p.appendChild(text);
-
-                                        p.appendChild(document.createElement("br"));
+                                        makeText(difftype, diffvalue, p);
 
                                         list.appendChild(p);
 
@@ -154,6 +139,15 @@
                             document.querySelector('p').textContent = "Geolocation is not supported by this browser.";
                           }
               var initials = {};
+              function makeText(type, value, p) {
+                  var dotpos = value.toString().indexOf('.');
+                  var space = '\xa0';
+                  var fixedvalue = space.repeat(4 - dotpos) + value;
+                  var t = type + ': ' + fixedvalue;
+                  var text = document.createTextNode(t);
+                  p.appendChild(text);
+                  p.appendChild(document.createElement("br"));
+                  }
               function showPosition(position) {
                       //var coords = [ 'latitude', 'longitude' ];
                       for(var i = 0, arraylen = coords.length; i < arraylen; i++) {
