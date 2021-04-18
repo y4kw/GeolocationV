@@ -55,7 +55,8 @@
 
       var watchID;
       function getLocation() {
-              var coords = [ 'latitude', 'longitude', 'altitude' ];
+              var coords = [ 'coords.latitude', 'coords.longitude', 'coords.altitude' ];
+              var timestamps = [ 'timestamp' ];
               var initTime;
               if (navigator.geolocation) {
                       navigator.geolocation.getCurrentPosition(showPosition, errorCallback);
@@ -107,7 +108,7 @@
                                         var p = document.createElement('p');
 
                                         var currentype = '+_current ' + coord;
-                                        var currentvalue =  eval('position.coords.' + coord).toFixed(7);
+                                        var currentvalue =  eval('position.' + coord).toFixed(7);
                                         makeText(currentype, currentvalue, p);
 
                                         var initialtype = '-_initial ' + coord;
@@ -122,15 +123,35 @@
 
                                       }
 
-                                      var p = document.createElement('p');
-                                      now = new Date(position.timestamp);
-                                      var currenttext = now.toLocaleTimeString();
-                                      makeText('+_current local time: ', currenttext, p);
+                                      //for(var i = 0, arraylen = timestamps.length; i < arraylen; i++) {
+                                      //  var timestamp = timestamps[i];
+                                      //  var p = document.createElement('p');
 
-                                      //var initialtext = initTime.toLocalTimeString();
-                                      //makeText('-_initial local time: ', initialtext, p);
+                                      //  var currentype = '+_current ' + timestamp;
+                                      //  now = new Date(position.timestamp);
+                                      //  var currentvalue =  now.toLocaleTimeString();
+                                      //  makeText(currentype, currentvalue, p);
 
-                                      list.appendChild(p);
+                                      //  var initialtype = '-_initial ' + timestamp;
+                                      //  var initialvalue = initials[coord].toLocaleTimeString();
+                                      //  makeText(initialtype, initialvalue, p);
+
+                                      //  //var difftype = '=_(diff)__' + coord.replace(/./g, '_');
+                                      //  //var diffvalue = (currentvalue - initialvalue).toFixed(7);
+                                      //  //makeText(difftype, diffvalue, p);
+
+                                      //  list.appendChild(p);
+
+                                      //}
+                                      //var p = document.createElement('p');
+                                      //now = new Date(position.timestamp);
+                                      //var currenttext = now.toLocaleTimeString();
+                                      //makeText('+_current local time: ', currenttext, p);
+
+                                      ////var initialtext = initTime.toLocalTimeString();
+                                      ////makeText('-_initial local time: ', initialtext, p);
+
+                                      //list.appendChild(p);
 
 
                                       //fullSeconds = Math.floor(now/1000.0) - Math.floor(initTime/1000.0);
@@ -164,7 +185,11 @@
                       //var coords = [ 'latitude', 'longitude' ];
                       for(var i = 0, arraylen = coords.length; i < arraylen; i++) {
                         var coord = coords[i];
-                        initials[coords[i]] = eval('position.coords.' + coord);
+                        initials[coords[i]] = eval('position.' + coord);
+                      }
+                      for(var i = 0, arraylen = timestamps.length; i < arraylen; i++) {
+                        var timestamp = timestamps[i];
+                        initials[timestamps[i]] = eval('position.' + timestamp);
                       }
                       spans = document.querySelectorAll('p span');
                       spans[1].textContent = '\xa0' + position.coords.latitude.toFixed(7);
