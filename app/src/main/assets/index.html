@@ -19,7 +19,7 @@
     -->
     <div class="my_text">
 
-
+<!--
       <p> +_current latitude:         <span></span><br>
       -_initial latitude:         <span></span><br>
       =_________________:         <span></span></p>
@@ -44,7 +44,7 @@
       <p> +_current local time:       <span></span><br>
       -_initial local time:       <span></span><br>
       =___________________:       <span></span></p>
-
+-->
 
       <p id="list"></p>
     </div>
@@ -55,7 +55,15 @@
 
       var watchID;
       function getLocation() {
-              var coords = [ 'coords.latitude', 'coords.longitude', 'coords.altitude' ];
+              var coords = [
+              'coords.latitude',
+              'coords.longitude',
+              'coords.accuracy' ,
+              'coords.altitude' ,
+              'coords.altitudeAccuracy' ,
+              'coords.heading' ,
+              'coords.speed' ,
+              ];
               var timestamps = [ 'timestamp' ];
               var initTime;
               if (navigator.geolocation) {
@@ -63,7 +71,7 @@
 
                       watchID = navigator.geolocation.watchPosition(
                               function(position){
-                                      spans = document.querySelectorAll('p span');
+                                      //spans = document.querySelectorAll('p span');
                                       //spans[0].textContent = '\xa0' + position.coords.latitude.toFixed(7);
                                       //spans[3].textContent =  '\xa0' + position.coords.longitude;
                                       //spans[6].textContent =  '\xa0' + position.coords.altitude;
