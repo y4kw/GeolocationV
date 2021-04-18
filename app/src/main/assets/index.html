@@ -137,7 +137,8 @@
                                         var initialvalue = init.toLocaleTimeString();
                                         makeText(initialtype, initialvalue, p);
 
-                                        fullSeconds = Math.floor(now/1000.0) - Math.floor(initTime/1000.0);
+                                        fullSeconds = Math.floor(now/1000.0) - Math.floor(init/1000.0);
+                                        //fullSeconds = Math.floor(now/1000.0) - Math.floor(initTime/1000.0);
                                         var paddingZero = function(n) {
                                                 return (n < 10) ? '\xa0' + n : n;
                                               };
@@ -204,17 +205,17 @@
                         var timestamp = timestamps[i];
                         initials[timestamps[i]] = eval('position.' + timestamp);
                       }
-                      spans = document.querySelectorAll('p span');
-                      spans[1].textContent = '\xa0' + position.coords.latitude.toFixed(7);
-                      spans[4].textContent = '\xa0' + position.coords.longitude;
-                      spans[7].textContent = '\xa0' + position.coords.altitude;
-                      spans[10].textContent = '\xa0' +  position.coords.accuracy;
-                      spans[13].textContent = '\xa0' +  position.coords.altitudeAccuracy;
-                      spans[16].textContent = '\xa0' +  position.coords.heading;
-                      spans[19].textContent = '\xa0' +  position.coords.speed;
+                      //spans = document.querySelectorAll('p span');
+                      //spans[1].textContent = '\xa0' + position.coords.latitude.toFixed(7);
+                      //spans[4].textContent = '\xa0' + position.coords.longitude;
+                      //spans[7].textContent = '\xa0' + position.coords.altitude;
+                      //spans[10].textContent = '\xa0' +  position.coords.accuracy;
+                      //spans[13].textContent = '\xa0' +  position.coords.altitudeAccuracy;
+                      //spans[16].textContent = '\xa0' +  position.coords.heading;
+                      //spans[19].textContent = '\xa0' +  position.coords.speed;
 
-                      initTime = new Date(position.timestamp);
-                      spans[22].textContent = initTime.toLocaleTimeString();
+                      //initTime = new Date(position.timestamp);
+                      //spans[22].textContent = initTime.toLocaleTimeString();
 
                       //latitude = document.querySelectorAll('#latitude span');
                       //latitude[1].textContent = '\xa0' + position.coords.latitude.toFixed(7);
