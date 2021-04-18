@@ -132,9 +132,10 @@
                                         var currentvalue =  now.toLocaleTimeString();
                                         makeText(currentype, currentvalue, p);
 
-                                        //var initialtype = '-_initial ' + timestamp;
-                                        //var initialvalue = initials[timestamp].toLocaleTimeString();
-                                        //makeText(initialtype, initialvalue, p);
+                                        var initialtype = '-_initial ' + timestamp;
+                                        init = new Date(initials[timestamp]);
+                                        var initialvalue = init.toLocaleTimeString();
+                                        makeText(initialtype, initialvalue, p);
 
                                         //var difftype = '=_(diff)__' + coord.replace(/./g, '_');
                                         //var diffvalue = (currentvalue - initialvalue).toFixed(7);
