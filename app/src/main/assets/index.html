@@ -6,46 +6,7 @@
   </head>
   <body>
 
-
-    <!--
-      <hi>your coordinates.</hi>
-      <button onclick="getLocation()">Try It</button>
-
-      <p id="demo"></p>
-      <br>
-      <p id="demowatch"></p>
-      <br>
-      <br>
-    -->
     <div class="my_text">
-
-<!--
-      <p> +_current latitude:         <span></span><br>
-      -_initial latitude:         <span></span><br>
-      =_________________:         <span></span></p>
-      <p> +_current longitude:        <span></span><br>
-      -_initial longitude:        <span></span><br>
-      =__________________:        <span></span></p>
-      <p> +_current altitude:         <span></span><br>
-      -_initial altitude:         <span></span><br>
-      =_________________:         <span></span></p>
-      <p> +_current accuracy:         <span></span><br>
-      -_initial accuracy:         <span></span><br>
-      =_________________:         <span></span></p>
-      <p> +_current altitudeAccuracy: <span></span><br>
-      -_initial altitudeAccuracy: <span></span><br>
-      =_________________________: <span></span></p>
-      <p> +_current heading:          <span></span><br>
-      -_initial heading:          <span></span><br>
-      =________________:          <span></span></p>
-      <p> +_current speed:            <span></span><br>
-      -_initial speed:            <span></span><br>
-      =______________:            <span></span></p>
-      <p> +_current local time:       <span></span><br>
-      -_initial local time:       <span></span><br>
-      =___________________:       <span></span></p>
--->
-
       <p id="list"></p>
     </div>
 
@@ -71,43 +32,6 @@
 
                       watchID = navigator.geolocation.watchPosition(
                               function(position){
-                                      //spans = document.querySelectorAll('p span');
-                                      //spans[0].textContent = '\xa0' + position.coords.latitude.toFixed(7);
-                                      //spans[3].textContent =  '\xa0' + position.coords.longitude;
-                                      //spans[6].textContent =  '\xa0' + position.coords.altitude;
-                                      //spans[9].textContent =  '\xa0' + position.coords.accuracy;
-                                      //spans[12].textContent = '\xa0' +  position.coords.altitudeAccuracy;
-                                      //spans[15].textContent = '\xa0' +  position.coords.heading;
-                                      //spans[18].textContent = '\xa0' +  position.coords.speed;
-
-                                      //now = new Date(position.timestamp);
-                                      //spans[21].textContent = now.toLocaleTimeString();
-
-                                      //len = spans[0].textContent.length;
-                                      //lendiff = (spans[0].textContent - spans[1].textContent).toFixed(7).toString().length;
-                                      ////spans[2].textContent = lendiff;
-                                      //spans[2].textContent
-                                      //  = ('\xa0\xa0\xa0' + (spans[0].textContent - spans[1].textContent).toFixed(7)).substring((-8+lendiff));
-
-                                      //spans[5].textContent = (spans[3].textContent - spans[4].textContent).toFixed(7);
-                                      //spans[8].textContent = (spans[6].textContent - spans[7].textContent).toFixed(7);
-                                      //spans[11].textContent = (spans[9].textContent - spans[10].textContent).toFixed(7);
-                                      //spans[14].textContent = (spans[12].textContent - spans[13].textContent).toFixed(7);
-                                      //spans[17].textContent = (spans[15].textContent - spans[16].textContent).toFixed(7);
-                                      //spans[20].textContent = (spans[18].textContent - spans[19].textContent).toFixed(7);
-
-                                      //fullSeconds = Math.floor(now/1000.0) - Math.floor(initTime/1000.0);
-                                      //var paddingZero = function(n) {
-                                      //        return (n < 10) ? '\xa0' + n : n;
-                                      //      };
-                                      //hour = Math.floor(fullSeconds / 3600);
-                                      //minute = Math.floor(fullSeconds % 3600 / 60);
-                                      //second = Math.floor(fullSeconds % 60);
-                                      //hour= paddingZero(hour);
-                                      //minute= paddingZero(minute);
-                                      //second = paddingZero(second);
-                                      //spans[23].textContent =hour + ':' + minute + ':' + second;
-
 
                                       var list = document.getElementById('list');
                                       list.textContent = '';
@@ -148,7 +72,6 @@
                                         makeText(initialtype, initialvalue, p);
 
                                         fullSeconds = Math.floor(now/1000.0) - Math.floor(init/1000.0);
-                                        //fullSeconds = Math.floor(now/1000.0) - Math.floor(initTime/1000.0);
                                         var paddingZero = function(n) {
                                                 return (n < 10) ? '\xa0' + n : n;
                                               };
@@ -167,18 +90,6 @@
                                         list.appendChild(p);
 
                                       }
-                                      //var p = document.createElement('p');
-                                      //now = new Date(position.timestamp);
-                                      //var currenttext = now.toLocaleTimeString();
-                                      //makeText('+_current local time: ', currenttext, p);
-
-                                      ////var initialtext = initTime.toLocalTimeString();
-                                      ////makeText('-_initial local time: ', initialtext, p);
-
-                                      //list.appendChild(p);
-
-
-                                      //fullSeconds = Math.floor(now/1000.0) - Math.floor(initTime/1000.0);
                                       var paddingZero = function(n) {
                                               return (n < 10) ? '\xa0' + n : n;
                                             };
@@ -188,8 +99,6 @@
                                       hour= paddingZero(hour);
                                       minute= paddingZero(minute);
                                       second = paddingZero(second);
-                                      //spans[23].textContent =hour + ':' + minute + ':' + second;
-
 
                                     },null);
                     } else {
@@ -215,20 +124,6 @@
                         var timestamp = timestamps[i];
                         initials[timestamps[i]] = eval('position.' + timestamp);
                       }
-                      //spans = document.querySelectorAll('p span');
-                      //spans[1].textContent = '\xa0' + position.coords.latitude.toFixed(7);
-                      //spans[4].textContent = '\xa0' + position.coords.longitude;
-                      //spans[7].textContent = '\xa0' + position.coords.altitude;
-                      //spans[10].textContent = '\xa0' +  position.coords.accuracy;
-                      //spans[13].textContent = '\xa0' +  position.coords.altitudeAccuracy;
-                      //spans[16].textContent = '\xa0' +  position.coords.heading;
-                      //spans[19].textContent = '\xa0' +  position.coords.speed;
-
-                      //initTime = new Date(position.timestamp);
-                      //spans[22].textContent = initTime.toLocaleTimeString();
-
-                      //latitude = document.querySelectorAll('#latitude span');
-                      //latitude[1].textContent = '\xa0' + position.coords.latitude.toFixed(7);
                     }
 
               function errorCallback(error) {
