@@ -137,9 +137,26 @@
                                         var initialvalue = init.toLocaleTimeString();
                                         makeText(initialtype, initialvalue, p);
 
-                                        //var difftype = '=_(diff)__' + coord.replace(/./g, '_');
+                                        var paddingZero = function(n) {
+                                                return (n < 10) ? '\xa0' + n : n;
+                                              };
+                                        hour = Math.floor(fullSeconds / 3600);
+                                        minute = Math.floor(fullSeconds % 3600 / 60);
+                                        second = Math.floor(fullSeconds % 60);
+                                        hour= paddingZero(hour);
+                                        minute= paddingZero(minute);
+                                        second = paddingZero(second);
+                                        var diffvalue =hour + ':' + minute + ':' + second;
+                                          //var difftype = '=_(diff)__' + coord.replace(/./g, '_');
+                                          //var diffvalue = (currentvalue - initialvalue).toFixed(7);
+                                          //makeText(difftype, diffvalue, p);
+
+                                        var difftype = '=_(diff)__' + timestamp.replace(/./g, '_');
                                         //var diffvalue = (currentvalue - initialvalue).toFixed(7);
-                                        //makeText(difftype, diffvalue, p);
+                                        //var diffvalue = 'vv';
+                                        makeText(difftype, diffvalue, p);
+
+
 
                                         list.appendChild(p);
 
