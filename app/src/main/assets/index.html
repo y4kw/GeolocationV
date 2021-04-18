@@ -115,6 +115,8 @@
                                         var coord = coords[i];
                                         var p = document.createElement('p');
 
+                                        if (eval('position.' + coord) == null) {continue;}
+
                                         var currentype = '+_current ' + coord;
                                         var currentvalue =  eval('position.' + coord).toFixed(7);
                                         makeText(currentype, currentvalue, p);
