@@ -123,26 +123,26 @@
 
                                       }
 
-                                      //for(var i = 0, arraylen = timestamps.length; i < arraylen; i++) {
-                                      //  var timestamp = timestamps[i];
-                                      //  var p = document.createElement('p');
+                                      for(var i = 0, arraylen = timestamps.length; i < arraylen; i++) {
+                                        var timestamp = timestamps[i];
+                                        var p = document.createElement('p');
 
-                                      //  var currentype = '+_current ' + timestamp;
-                                      //  now = new Date(position.timestamp);
-                                      //  var currentvalue =  now.toLocaleTimeString();
-                                      //  makeText(currentype, currentvalue, p);
+                                        var currentype = '+_current ' + timestamp;
+                                        now = new Date(position.timestamp);
+                                        var currentvalue =  now.toLocaleTimeString();
+                                        makeText(currentype, currentvalue, p);
 
-                                      //  var initialtype = '-_initial ' + timestamp;
-                                      //  var initialvalue = initials[coord].toLocaleTimeString();
-                                      //  makeText(initialtype, initialvalue, p);
+                                        //var initialtype = '-_initial ' + timestamp;
+                                        //var initialvalue = initials[timestamp].toLocaleTimeString();
+                                        //makeText(initialtype, initialvalue, p);
 
-                                      //  //var difftype = '=_(diff)__' + coord.replace(/./g, '_');
-                                      //  //var diffvalue = (currentvalue - initialvalue).toFixed(7);
-                                      //  //makeText(difftype, diffvalue, p);
+                                        //var difftype = '=_(diff)__' + coord.replace(/./g, '_');
+                                        //var diffvalue = (currentvalue - initialvalue).toFixed(7);
+                                        //makeText(difftype, diffvalue, p);
 
-                                      //  list.appendChild(p);
+                                        list.appendChild(p);
 
-                                      //}
+                                      }
                                       //var p = document.createElement('p');
                                       //now = new Date(position.timestamp);
                                       //var currenttext = now.toLocaleTimeString();
