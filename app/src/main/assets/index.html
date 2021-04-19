@@ -24,13 +24,6 @@
               'altitudeAccuracy' ,
               'heading' ,
               'speed' ,
-              //'coords.latitude',
-              //'coords.longitude',
-              //'coords.accuracy' ,
-              //'coords.altitude' ,
-              //'coords.altitudeAccuracy' ,
-              //'coords.heading' ,
-              //'coords.speed' ,
               ];
               var timestamps = [ 'timestamp' ];
               var initTime;
@@ -115,7 +108,14 @@
               function showPosition(position) {
                       for(var i = 0, arraylen = coords.length; i < arraylen; i++) {
                         var coord = coords[i];
+                        if (position.coords[coord] == null) {
+                          continue;
+                        } else {
                         initials[coord] = position.coords[coord];
+                        }
+                        //if (initial[coord] == null) {
+                        //  initial[coord] = 0.00;
+                        //  }
                       }
                       for(var i = 0, arraylen = timestamps.length; i < arraylen; i++) {
                         var timestamp = timestamps[i];
