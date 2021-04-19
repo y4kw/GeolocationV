@@ -17,13 +17,20 @@
       var watchID;
       function getLocation() {
               var coords = [
-              'coords.latitude',
-              'coords.longitude',
-              'coords.accuracy' ,
-              'coords.altitude' ,
-              'coords.altitudeAccuracy' ,
-              'coords.heading' ,
-              'coords.speed' ,
+              'latitude',
+              'longitude',
+              'accuracy' ,
+              'altitude' ,
+              'altitudeAccuracy' ,
+              'heading' ,
+              'speed' ,
+              //'coords.latitude',
+              //'coords.longitude',
+              //'coords.accuracy' ,
+              //'coords.altitude' ,
+              //'coords.altitudeAccuracy' ,
+              //'coords.heading' ,
+              //'coords.speed' ,
               ];
               var timestamps = [ 'timestamp' ];
               var initTime;
@@ -39,10 +46,12 @@
                                         var coord = coords[i];
                                         var p = document.createElement('p');
 
-                                        if (eval('position.' + coord) == null) {continue;}
+                                        if (position.coords[coord] == null) {continue;}
 
                                         var currentype = '+_current ' + coord;
-                                        var currentvalue =  eval('position.' + coord).toFixed(7);
+                                        //var currentvalue =  position[coord].toFixed(7);
+                                        var currentvalue =  position.coords[coord].toFixed(7);
+                                        //var currentvalue =  eval('position.coords.' + coord).toFixed(7);
                                         makeText(currentype, currentvalue, p);
 
                                         var initialtype = '-_initial ' + coord;
@@ -104,14 +113,13 @@
                   p.appendChild(document.createElement("br"));
                   }
               function showPosition(position) {
-                      //var coords = [ 'latitude', 'longitude' ];
                       for(var i = 0, arraylen = coords.length; i < arraylen; i++) {
                         var coord = coords[i];
-                        initials[coords[i]] = eval('position.' + coord);
+                        initials[coord] = position.coords[coord];
                       }
                       for(var i = 0, arraylen = timestamps.length; i < arraylen; i++) {
                         var timestamp = timestamps[i];
-                        initials[timestamps[i]] = eval('position.' + timestamp);
+                        initials[timestamp] = position[timestamp];
                       }
                     }
 
